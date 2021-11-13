@@ -1,0 +1,48 @@
+<html>
+<head>
+<title>game.h</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #a9b7c6;}
+.s1 { color: #cc7832;}
+.s2 { color: #6a8759;}
+.s3 { color: #6897bb;}
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+game.h</font>
+</center></td></tr></table>
+<pre>
+<span class="s1">namespace </span><span class="s0">game</span>
+<span class="s0">{</span>
+
+    <span class="s1">void </span><span class="s0">game(main_gui_info* gui_info)</span>
+    <span class="s0">{</span>
+        <span class="s0">gui_info-&gt;window-&gt;clear()</span><span class="s1">;</span>
+        <span class="s0">UI_elements&lt;main_gui_info*&gt; gui_elements</span><span class="s1">;</span>
+        <span class="s0">create_interface(gui_elements</span><span class="s1">, </span><span class="s0">gui_info)</span><span class="s1">;</span>
+        <span class="s0">game::game_elements game_elements</span><span class="s1">;</span>
+        <span class="s0">create_element(game_elements</span><span class="s1">, </span><span class="s0">gui_info)</span><span class="s1">;</span>
+
+        <span class="s0">game_info info</span><span class="s1">;</span>
+        <span class="s1">while</span><span class="s0">(gui_info-&gt;window-&gt;isOpen() &amp;&amp; *gui_info-&gt;name == </span><span class="s2">&quot;game&quot;</span><span class="s0">)</span>
+        <span class="s0">{</span>
+            <span class="s1">if</span><span class="s0">(constants::delta_time == </span><span class="s3">0</span><span class="s0">)</span>
+                <span class="s0">constants::delta_time = </span><span class="s3">1</span><span class="s1">;</span>
+            <span class="s0">gui_info-&gt;fps++</span><span class="s1">;</span>
+
+            <span class="s0">game_process(gui_info</span><span class="s1">, </span><span class="s0">game_elements</span><span class="s1">, </span><span class="s0">info)</span><span class="s1">;</span>
+            <span class="s0">draw(gui_info</span><span class="s1">, </span><span class="s0">gui_elements</span><span class="s1">, </span><span class="s0">game_elements)</span><span class="s1">;</span>
+
+
+            <span class="s0">event_check(gui_info</span><span class="s1">, </span><span class="s0">gui_elements</span><span class="s1">, </span><span class="s0">game_elements)</span><span class="s1">;</span><span class="s0">event_check(gui_info</span><span class="s1">, </span><span class="s0">gui_elements</span><span class="s1">, </span><span class="s0">game_elements)</span><span class="s1">;</span>
+            <span class="s0">constants::set_delta_time(duration_cast&lt;std::chrono::milliseconds&gt;(system_clock::now() - gui_info-&gt;time_point).count())</span><span class="s1">;</span>
+            <span class="s0">gui_info-&gt;time_point = system_clock::now()</span><span class="s1">;</span>
+        <span class="s0">}</span>
+    <span class="s0">}</span>
+<span class="s0">}</span></pre>
+</body>
+</html>

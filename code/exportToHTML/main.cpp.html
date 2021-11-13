@@ -1,0 +1,67 @@
+<html>
+<head>
+<title>main.cpp</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #bbb529;}
+.s1 { color: #a9b7c6;}
+.s2 { color: #6a8759;}
+.s3 { color: #cc7832;}
+.s4 { color: #6897bb;}
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+main.cpp</font>
+</center></td></tr></table>
+<pre><span class="s0">#include </span><span class="s2">&quot;library.h&quot;</span>
+<span class="s0">#define </span><span class="s1">_GLIBCXX_DEBUG</span>
+<span class="s3">using namespace </span><span class="s1">sf</span><span class="s3">;</span>
+<span class="s3">using namespace </span><span class="s1">std</span><span class="s3">;</span>
+<span class="s3">namespace </span><span class="s1">constants</span>
+<span class="s1">{</span>
+    <span class="s3">double </span><span class="s1">window_coef</span><span class="s3">;</span>
+    <span class="s3">double </span><span class="s1">delta_time</span><span class="s3">;</span>
+    <span class="s3">double </span><span class="s1">old_delta_time = -</span><span class="s4">1</span><span class="s3">;</span>
+    <span class="s1">time_t rand_time</span><span class="s3">;</span>
+    <span class="s3">void </span><span class="s1">set_delta_time(</span><span class="s3">int </span><span class="s1">a)</span>
+    <span class="s1">{</span>
+        <span class="s1">delta_time = a / </span><span class="s4">8</span><span class="s3">;</span>
+        <span class="s3">if</span><span class="s1">(constants::old_delta_time != -</span><span class="s4">1</span><span class="s1">)</span>
+        <span class="s1">{</span>
+            <span class="s1">constants::delta_time = constants::old_delta_time</span><span class="s3">;</span>
+            <span class="s1">constants::old_delta_time = -</span><span class="s4">1</span><span class="s3">;</span>
+        <span class="s1">}</span>
+    <span class="s1">}</span>
+    <span class="s3">void </span><span class="s1">set_window_coef()</span>
+    <span class="s1">{</span>
+        <span class="s1">rand_time = time(</span><span class="s4">0</span><span class="s1">)</span><span class="s3">;</span>
+        <span class="s1">srand(time(</span><span class="s4">0</span><span class="s1">))</span><span class="s3">;</span>
+        <span class="s1">constants::window_coef = min(VideoMode::getDesktopMode().width / </span><span class="s4">1920.0</span><span class="s3">, </span><span class="s1">VideoMode::getDesktopMode().height / </span><span class="s4">1080.0</span><span class="s1">)</span><span class="s3">;</span>
+    <span class="s1">}</span>
+<span class="s1">}</span>
+
+
+<span class="s0">#include </span><span class="s2">&quot;headers.h&quot;</span>
+
+
+<span class="s3">int </span><span class="s1">main()</span>
+<span class="s1">{</span>
+    <span class="s1">ofstream out(</span><span class="s2">&quot;score.txt&quot;</span><span class="s1">)</span><span class="s3">;</span>
+    <span class="s1">out &lt;&lt; </span><span class="s4">0</span><span class="s3">;</span>
+    <span class="s1">out.close()</span><span class="s3">;</span>
+    <span class="s1">ofstream cout(</span><span class="s2">&quot;log&quot;</span><span class="s1">)</span><span class="s3">;</span>
+    
+   
+
+    <span class="s1">RenderWindow window(VideoMode::getDesktopMode()</span><span class="s3">, </span><span class="s2">&quot;GAME&quot;</span><span class="s3">, </span><span class="s1">Style::Fullscreen)</span><span class="s3">;</span>
+    <span class="s1">window.setFramerateLimit(</span><span class="s4">240</span><span class="s1">)</span><span class="s3">;</span>
+    <span class="s1">constants::set_window_coef()</span><span class="s3">;</span>
+    <span class="s1">main_gui_info gui_info(&amp;window)</span><span class="s3">;</span>
+    <span class="s1">main_menu::main(&amp;gui_info)</span><span class="s3">;</span>
+<span class="s1">}</span>
+</pre>
+</body>
+</html>

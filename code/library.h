@@ -1,0 +1,10 @@
+#include <SFML/Graphics.hpp>
+#include <vector>
+#include <utility>
+#include <iostream>
+#include <chrono>
+#include <map>
+#include <set>
+#include <algorithm>
+#include <list>
+#include <fstream>

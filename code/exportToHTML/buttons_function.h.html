@@ -1,0 +1,58 @@
+<html>
+<head>
+<title>buttons_function.h</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cc7832;}
+.s1 { color: #a9b7c6;}
+.s2 { color: #6a8759;}
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+buttons_function.h</font>
+</center></td></tr></table>
+<pre><span class="s0">namespace </span><span class="s1">main_menu</span>
+<span class="s1">{</span>
+    <span class="s0">void </span><span class="s1">exit(main_gui_info *gui_info)</span>
+    <span class="s1">{</span>
+        <span class="s1">gui_info-&gt;window-&gt;close()</span><span class="s0">;</span>
+    <span class="s1">}</span>
+
+    <span class="s0">void </span><span class="s1">start(main_gui_info *gui_info)</span>
+    <span class="s1">{</span>
+        <span class="s1">*gui_info-&gt;name = </span><span class="s2">&quot;game&quot;</span><span class="s0">;</span>
+        <span class="s1">game::game(gui_info)</span><span class="s0">;</span>
+    <span class="s1">}</span>
+<span class="s1">}</span>
+<span class="s0">namespace </span><span class="s1">game</span>
+<span class="s1">{</span>
+    <span class="s0">void </span><span class="s1">pause(main_gui_info* gui_info)</span>
+    <span class="s1">{</span>
+        <span class="s1">constants::old_delta_time = constants::delta_time</span><span class="s0">;</span>
+        <span class="s1">*gui_info-&gt;name = </span><span class="s2">&quot;pause&quot;</span><span class="s0">;</span>
+        <span class="s1">pause::pause(gui_info)</span><span class="s0">;</span>
+    <span class="s1">}</span>
+    <span class="s0">void </span><span class="s1">game_over(main_gui_info* gui_info)</span>
+    <span class="s1">{</span>
+        <span class="s1">*gui_info-&gt;name = </span><span class="s2">&quot;game_over&quot;</span><span class="s0">;</span>
+        <span class="s1">game_over::game_over(gui_info)</span><span class="s0">;</span>
+    <span class="s1">}</span>
+
+<span class="s1">}</span>
+<span class="s0">namespace </span><span class="s1">pause</span>
+<span class="s1">{</span>
+    <span class="s0">void </span><span class="s1">resume(main_gui_info* gui_info)</span>
+    <span class="s1">{</span>
+        <span class="s1">*gui_info-&gt;name = </span><span class="s2">&quot;game&quot;</span><span class="s0">;</span>
+    <span class="s1">}</span>
+    <span class="s0">void </span><span class="s1">exit(main_gui_info* gui_info)</span>
+    <span class="s1">{</span>
+        <span class="s1">*gui_info-&gt;name = </span><span class="s2">&quot;main_menu&quot;</span><span class="s0">;</span>
+    <span class="s1">}</span>
+<span class="s1">}</span>
+</pre>
+</body>
+</html>
