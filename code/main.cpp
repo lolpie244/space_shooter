@@ -35,7 +35,7 @@ int main()
 {
 
     RenderWindow window(VideoMode::getDesktopMode(), "GAME", Style::Fullscreen);
-    window.setFramerateLimit(240);
+    window.setFramerateLimit(60);
     constants::set_window_coef();
     main_gui_info gui_info(&window);
     main_menu::main(&gui_info);
