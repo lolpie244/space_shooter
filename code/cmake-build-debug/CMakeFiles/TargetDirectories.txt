@@ -1,7 +1,0 @@
-/home/lolpie/projects/game/cmake-build-debug/CMakeFiles/install/strip.dir
-/home/lolpie/projects/game/cmake-build-debug/CMakeFiles/install/local.dir
-/home/lolpie/projects/game/cmake-build-debug/CMakeFiles/game.dir
-/home/lolpie/projects/game/cmake-build-debug/CMakeFiles/edit_cache.dir
-/home/lolpie/projects/game/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/home/lolpie/projects/game/cmake-build-debug/CMakeFiles/install.dir
-/home/lolpie/projects/game/cmake-build-debug/CMakeFiles/list_install_components.dir
